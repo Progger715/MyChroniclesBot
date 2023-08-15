@@ -15,6 +15,36 @@ async def cmd_start(message: types.Message):
                          reply_markup=keyboards.keyboard_main)
 
 
+@dp.message_handler(commands=['menu'])
+async def cmd_start(message: types.Message):
+    await message.answer(text="Открыто меню", reply_markup=keyboards.keyboard_main)
+
+
+@dp.message_handler(commands=['help'])
+async def cmd_start(message: types.Message):
+    await message.answer(f"Доступные команды:\n"
+                         f"/start - запустить бота\n"
+                         f"/help - помощь\n"
+                         f"/menu - показать меню\n"
+                         f"/get_post_about_hobby - получить пост о моем увлечении\n\n"
+                         f"Для доступа к другому функционалу бота введите команду /menu и выберите интересующую "
+                         f"Вас команду",
+                         reply_markup=keyboards.keyboard_main)
+
+
+@dp.message_handler(commands=['get_post_about_hobby'])
+async def cmd_start(message: types.Message):
+    await message.answer(f"Рок музыку я полюбил с детства, наверное с момента, когда впервые услышал динамичное и "
+                         f"мощное звучание группы Rammstein. До определенного возраста (лет до 10) я вообще не "
+                         f"признавал никакой музыки, кроме Rammstein и КиШ. Каждая нота, каждый аккорд переносит меня "
+                         f"в мир энергии, страсти и свободы. Я думаю, что не нужно играть на инструментах, чтобы "
+                         f"почувствовать этот драйв. Звуки гитары и мощный ритм барабанов помогают мне и расслабляться,"
+                         f" и наоборот собираться с силами, стоит лишь понять свое желание и выбрать правильный трек."
+                         f"С возрастом моя любовь к этой музыке только крепнет, я нахожу все новых и новых "
+                         f"исполнителей. Я думаю, что это не просто музыкальное течение, это зов сердца.",
+                         reply_markup=keyboards.keyboard_main)
+
+
 # текстовые команды
 @dp.message_handler(text='Посмотреть фото')
 async def get_photo(message: types.Message):
