@@ -1,4 +1,5 @@
 from aiogram import Bot, Dispatcher, executor, types
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from src import keyboards
 from dotenv import load_dotenv
 import os
@@ -58,7 +59,11 @@ async def get_audio(message: types.Message):
 
 @dp.message_handler(text='Перейти к репозиторию с кодом бота')
 async def get_url(message: types.Message):
-    await message.answer("Url not found")
+    keyboard = InlineKeyboardMarkup()
+    url_button = InlineKeyboardButton("Открыть репозиторий",
+                                      url="")
+    keyboard.add(url_button)
+    await message.answer("Ссылка на репозиторий с кодом", reply_markup=keyboard)
 
 
 # действие по умолчанию
@@ -71,19 +76,19 @@ async def answer(message: types.Message):
 @dp.callback_query_handler()
 async def callback_query_keyboards(callback_query: types.CallbackQuery):
     if callback_query.data == 'photo_last_selfie':
-        photo = open("", "rb")
+        photo = open("data/selfie.jpg", "rb")
         await bot.send_photo(chat_id=callback_query.from_user.id, photo=photo)
     elif callback_query.data == 'photo_height_school':
-        photo = open("", "rb")
+        photo = open("data/school.jpg", "rb")
         await bot.send_photo(chat_id=callback_query.from_user.id, photo=photo)
     elif callback_query.data == 'audio_GPT':
-        voice = open("", "rb")
+        voice = open("data/gpt.ogg", "rb")
         await bot.send_voice(chat_id=callback_query.from_user.id, voice=voice)
     elif callback_query.data == 'audio_SQL_or_NoSQL':
-        voice = open("", "rb")
+        voice = open("data/sql.ogg", "rb")
         await bot.send_voice(chat_id=callback_query.from_user.id, voice=voice)
     elif callback_query.data == 'audio_love_store':
-        voice = open("", "rb")
+        voice = open("data/love store.ogg", "rb")
         await bot.send_voice(chat_id=callback_query.from_user.id, voice=voice)
 
 
