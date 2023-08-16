@@ -49,12 +49,12 @@ async def cmd_start(message: types.Message):
 # текстовые команды
 @dp.message_handler(text='Посмотреть фото')
 async def get_photo(message: types.Message):
-    await message.answer("Photo no found", reply_markup=keyboards.buttons_select_photo)
+    await message.answer("Выберите фото", reply_markup=keyboards.buttons_select_photo)
 
 
 @dp.message_handler(text='Получить голосовое сообщение')
 async def get_audio(message: types.Message):
-    await message.answer("Audio not found", reply_markup=keyboards.buttons_select_audio)
+    await message.answer("Выберите голосовое сообщение", reply_markup=keyboards.buttons_select_audio)
 
 
 @dp.message_handler(text='Перейти к репозиторию с кодом бота')
