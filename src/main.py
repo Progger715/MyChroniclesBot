@@ -61,7 +61,7 @@ async def get_audio(message: types.Message):
 async def get_url(message: types.Message):
     keyboard = InlineKeyboardMarkup()
     url_button = InlineKeyboardButton("Открыть репозиторий",
-                                      url="")
+                                      url="https://github.com/Progger715/MyChroniclesBot/tree/main")
     keyboard.add(url_button)
     await message.answer("Ссылка на репозиторий с кодом", reply_markup=keyboard)
 
